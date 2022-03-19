@@ -2,47 +2,36 @@ import java.util.Scanner;
 public class GpCalculator {
     public static void main(String[]args){
         //calculates the gp of 200l EEE FUTO students
-
         Scanner input = new Scanner(System.in);
         System.out.println("Enter your scores");
-        System.out.print("Maths: ");
-        int mathsScore = input.nextInt();
-        System.out.print("Eng226: ");
-        int Eng226Score = input.nextInt();
-        System.out.print("EEE202: ");
-        int EEE202Score = input.nextInt();
-        System.out.print("EEE204: ");
-        int EEE204Score = input.nextInt();
-        System.out.print("Eng208: ");
-        int Eng208Score = input.nextInt();
-        System.out.print("Eng212: ");
-        int Eng212Score = input.nextInt();
-        System.out.print("Eng202: ");
-        int Eng202Score = input.nextInt();
-        System.out.print("Eng214: ");
-        int Eng214Score = input.nextInt();
-        System.out.print("EEE206: ");
-        int EEE206Score = input.nextInt();
-        System.out.print("Eng224: ");
-        int Eng224Score = input.nextInt();
-      // int my_courses [] = new int[10];
-        Grade mygrade = new Grade(mathsScore);
-
-        System.out.print(mygrade.score);
+        String [] my_Courses = { "Maths", "Eng 226", "EEE 202", "EEE 204", "EEE 208", "Eng 212", "Eng 202",
+                "Eng 214", "EEE 206", "Eng 224"};
+        int [] my_Scores =new int [10];
+//        int number;
+        for (int i = 0; i <= 9 ; i++) {
+            System.out.print(my_Courses[i]  + ": ");
+            int number = input.nextInt();
+           // System.out.println(m);
+           my_Scores[i] =number ;
+        }
+        Grade mygrade = new Grade(my_Scores);
+        System.out.print(mygrade.getUnits());
 
     }
 }
 class Grade {
-    int score;
-    int equivalent,grade, A, B, C, D, F ;
-    //int course;
-    String units, course,  Maths, Eng226, EEE202, EEE204, Eng208, Eng212, Eng202, Eng214, EEE206, Eng224 ;
+      int [] score =new int [10];
+    String [] my_Courses = { "Maths", "Eng 226", "EEE 202", "EEE 204", "EEE 208", "Eng 212", "Eng 202",
+            "Eng 214", "EEE 206", "Eng 224"};
 
-    Grade(int newScore){
+    int equivalent,grade, A, B, C, D, F,units ;
+    String  course,  Maths, Eng226, EEE202, EEE204, Eng208, Eng212, Eng202, Eng214, EEE206, Eng224 ;
+
+    Grade(int [] newScore){
         score =  newScore;
 
     }
-    int getGrade() {
+   /* int getGrade() {
         if (score >= 70 && score <= 100) {
             grade = A;
             equivalent = 5;
@@ -59,17 +48,21 @@ class Grade {
             grade = F;
             equivalent = 1;
         }return equivalent;
-    }
-    String getUnits(){
-        if(course == Maths||course == Eng226){
-            units = "3";
-        } if(course == EEE202||course == Eng224 || course == EEE204 || course == Eng208 || course == Eng214){
-            units = "2";
-        } if(course == Eng202||course == EEE206){
-            units = "1";
-        }return units;
+    }*/int TNU =0;
+    int getUnits(){
+        for (int i = 0; i < 10; i++) {
+            if(my_Courses[i] == Maths||my_Courses[i] == Eng226){
+                units = 3;
+            } if(my_Courses[i] == EEE202||my_Courses[i] == Eng224 || my_Courses[i] == EEE204 || my_Courses[i] == Eng208 || my_Courses[i] == Eng214){
+                units = 2;
+            } if(my_Courses[i] == Eng202||my_Courses[i] == EEE206){
+                units = 1;
+            }
+                  TNU = Integer.parseInt(my_Courses[i] +TNU);
+        }
+       return TNU;
 
-    }void Grade(int newScore){ //TUL is total unit load
+    }void Grade(int [] newScore){ //TUL is total unit load
         score =  newScore;
         //units = newUnits;
        // grade = newGrade;
