@@ -6,3 +6,4 @@ This project has 3 components which have been used to achieve this aim of studyi
 2. Quiz
 3. Gp calculator 
 ### Classes in this project
+1. App: this class contains the main method. 
